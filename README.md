@@ -3,7 +3,6 @@
 ![header](https://capsule-render.vercel.app/api?type=waving&color=gradient&height=150&section=header&text=%20&fontSize=40&animation=fadeIn)
 
 ## 안녕 여러분 👋
-<hr>
 #### 문제 해결과 효율적인 생산성에 관심이 많은 학생입니다.
 
 ### 😄 연락 : <a href="#"> <img src="[https://img.shields.io/badge/노션-beige](https://img.shields.io/badge/%EB%85%B8%EC%85%98-beige)??style=for-the-badge&logo=Notion&logoColor=#000000"/></a> 
