@@ -1,0 +1,1023 @@
+@charset "utf-8";
+
+:root {
+    --main1: #D21033;
+    --second_color: #555555;
+    --three_color: #333333;
+    --four_color: #777777;
+    --text_color: #1A1A1A;
+    --backgrond: #FEFEFE;
+    --backgrond2: #ddd;
+    --tabbutton: black;
+    --border: red;
+    /*dotted 선*/
+    --caton: white;
+    /*카테고리 활성화 버튼*/
+    --factname: #111111;
+    /*팩트 체크 제목*/
+    --shadow: #252525;
+
+    /*반복되는 색 이름 지정 후 var 사용*/
+
+    --timeline_year: var(--main1);
+    /*타임라인 연도*/
+    --caton_bg: var(--main1);
+    /*카테거리 활성화 버튼 백그라운드*/
+
+    --timeline_cf: var(--second_color);
+    /*타임라인 설명*/
+    --stoer_details: var(--second_color);
+    /*매장 상세 정보*/
+    --ooo: var(--second_color);
+    /*휴무일 안내*/
+
+    --text: var(--three_color);
+    /*본문 텍스트*/
+    --factlist: var(--three_color);
+    /*팩트 리스트*/
+    --catoff: var(--three_color);
+    /*카테고리 비활성화*/
+    --menuPrice: var(--three_color);
+    /*메뉴 가격*/
+    --page_name: var(--three_color);
+    /*페이지 제목*/
+    --store_card: var(--three_color);
+    /*매장명 (카드)*/
+
+    --comment: var(--four_color);
+    /*하단 주석*/
+    --store_no: var(--four_color);
+    /*총 매장수*/
+
+    --detailslink: var(--text_color);
+    /*상세보기 링크*/
+}
+
+html {
+    background-color: var(--backgrond);
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Noto Sans KR', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: var(--text-primary);
+    color: var(--three_color);
+    line-height: 1.6;
+    background: var(--backgrond);
+    min-height: 100vh;
+}
+
+header {
+    background: var(--backgrond);
+    border-bottom: 1px solid var(--backgrond);
+}
+
+.header-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+    justify-content: space-between;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo-image {
+    font-size: 28px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    color: var(--main1);
+    white-space: nowrap;
+}
+
+nav {
+    flex: 1;
+}
+
+.nav {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 80px;
+    font-size: 1.5rem;
+}
+
+.nav a {
+    text-decoration: none;
+    color: var(--text_color);
+    white-space: nowrap;
+}
+
+.nav-list a:hover {
+    color: var(--main1);
+    font-weight: 700;
+    border-bottom: solid 2px var(--main1);
+}
+
+/* ===== 영상 영역 ===== */
+.video-section {
+    padding: 40px 16px;
+    background: var(--backgrond);
+}
+
+.video-wrapper {
+    position: relative;
+    max-width: 1100px;
+    margin: 0 auto;
+    background: var(--backgrond);
+    overflow: hidden;
+    padding-top: 40px;
+    padding-bottom: 60px;
+}
+
+.video-wrapper::before,
+.video-wrapper::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 100%;
+    background-repeat: repeat-x;
+    background-position: center;
+    background-size: auto 100%;
+}
+
+.video-wrapper::before {
+    top: 0;
+    height: 40px;
+    background-image: url("./image/top.png");
+}
+
+.video-wrapper::after {
+    bottom: 0;
+    height: 60px;
+    background-image: url("./image/bottom.png");
+}
+
+.video-container {
+    position: relative;
+    z-index: 1;
+}
+
+.video-wrapper video {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* ===== 본문 ===== */
+.page-wrapper {
+    max-width: 1100px;
+    margin: 60px auto;
+    padding: 0 16px;
+}
+
+/* 상단 햄버거 아이콘 */
+.icon-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 32px;
+}
+
+.burger-icon {
+    width: 72px;
+    height: auto;
+    display: block;
+}
+
+
+@keyframes shake {
+
+    /* 아이콘이 가로축(X)으로 좌우로 움직이는 단계 */
+    0% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-4px);
+    }
+
+    50% {
+        transform: translateX(4px);
+    }
+
+    75% {
+        transform: translateX(-4px);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+.burger-icon:hover {
+    animation: shake 1s ease-in-out infinite;
+}
+
+/* 2단 레이아웃 */
+.content {
+    display: flex;
+    gap: 56px;
+    align-items: stretch;
+}
+
+
+/* 왼쪽: 팩트 말풍선 컬럼 */
+.facts-column {
+    flex: 3;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.fact-card {
+    position: relative;
+    background: var(--backgrond2);
+    border-radius: 50px;
+    padding: 18px 130px 18px 28px;
+    box-shadow: 0 10px 10px 0 var(--shadow, 0.2);
+    max-width: 560px;
+    width: 100%;
+}
+
+.fact-headline {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 6px;
+}
+
+.fact-desc {
+    font-size: 13px;
+    color: var(--factname);
+    line-height: 1.7;
+}
+
+.fact-icon {
+    position: absolute;
+    right: 28px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 56px;
+    height: auto;
+    transition: transform 0.3s ease;
+}
+.fact-icon:hover {
+    transform: translateY(-50%) scale(1.3); /* 10% 정도 확대 */
+}
+/* 오른쪽: 타임라인 컬럼 */
+.timeline {
+    flex: 2;
+    font-size: 16px;
+    line-height: 1.7;
+    position: relative;
+}
+
+.timeline-list {
+    list-style: none;
+    position: relative;
+    padding-left: 18px;
+}
+
+.timeline-list::before {
+    content: "";
+    position: absolute;
+    left: 4px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--main1);
+}
+
+.timeline-item {
+    margin-bottom: 24px;
+    position: relative;
+    padding-left: 12px;
+}
+
+.timeline-item::before {
+    content: "";
+    position: absolute;
+    left: -4px;
+    top: 4px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--main1);
+}
+
+.timeline-year {
+    font-weight: 700;
+    color: var(--timeline_years);
+    margin-bottom: 4px;
+}
+
+.timeline-desc {
+    color: var(--timeline_cf);
+    line-height: 1.9;
+}
+
+/* 하단 설명문 */
+.bottom-note {
+    margin: 60px auto 0;
+    max-width: 720px;
+    font-size: 14px;
+    text-align: center;
+    color: var(--comment);
+    line-height: 2;
+}
+
+/* 맨 아래 사진 – 화면 가로 꽉 차게 */
+.bottom-photo {
+    margin-top: 2.6rem;
+    margin-bottom: 2.4rem;
+}
+
+.bottom-photo img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+@media (max-width: 900px) {
+    .content {
+        flex-direction: column;
+        gap: 32px;
+    }
+
+    .facts-column {
+        align-items: stretch;
+    }
+
+    .fact-card {
+        padding-right: 88px;
+    }
+
+    .timeline {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .fact-headline {
+        font-size: 15px;
+    }
+
+    .fact-desc {
+        font-size: 12px;
+    }
+}
+
+li {
+    list-style: none;
+}
+
+img {
+    vertical-align: top;
+    max-width: 100%;
+}
+
+a {
+    text-decoration: none;
+}
+
+button {
+    cursor: pointer;
+}
+
+/*기본세팅끝*/
+
+
+/*4장 햄버거 사진 가로형으로 슬라이드*/
+.wrap {
+    width: 100%;
+    max-width: 1440px;
+    aspect-ratio: 1440/566;
+    height: auto;
+    overflow: hidden;
+    margin: 0 auto;
+    position: relative;
+    border-radius: 25rem;
+}
+
+/* 가로 트랙 */
+.train {
+    display: flex;
+    width: 400%;
+    height: 100%;
+    transition: transform 0.6s ease;
+}
+
+/* 이미지 1장 사이즈 고정 */
+.train img {
+    flex-basis: 25%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+/*4장 햄버거 사진 가로형으로 슬라이드 끝*/
+
+h1 {
+    text-align: center;
+    font-size: 2rem;
+    margin: 5%;
+    font-weight: bold;
+}
+
+
+.menu-tabs {
+    max-width: 1200px;
+    margin: 0 auto 30px auto;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.menu-tab {
+    padding: 10px 25px;
+    background: var(--backgrond2);
+    border-radius: 50px;
+    cursor: pointer;
+    transition: 0.2s;
+    font-weight: 600;
+}
+
+.menu-tab.active {
+    background: var(--main1);
+    color: var(--backgrond);
+}
+
+/* ------------------------
+   메뉴 그리드
+------------------------- */
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 25px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.menu-item {
+    background: var(--backgrond);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px var(--shadow, 0.08);
+    transition: 0.3s;
+}
+
+.menu-item:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 10px 20px var(--shadow, 0.15);
+    background-color: var(--main1);
+}
+
+.menu-item img {
+    width: 100%;
+    height: 170px;
+    object-fit: cover;
+    display: block;
+}
+
+.menu-info {
+    background: var(--backgrond);
+    padding: 12px;
+    text-align: center;
+    font-size: 15px;
+}
+.menu-info:hover, .price:hover {
+    background: var(--main1);
+    color: var(--caton);
+}
+.name {
+    font-weight: 700;
+    padding: auto;
+}
+.price {
+    color: var(--menuPrice);
+    font-size: 14px;
+}
+.container {
+    max-width: 1600px;
+    /* 너비 약간 증가 */
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+/* 헤더 영역 */
+.header-section {
+    margin-bottom: 30px;
+}
+
+.header-section h2 {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.total-count {
+    font-size: 14px;
+    color: var(--four_color);
+}
+
+/* 그리드 레이아웃 (3x3) */
+.store-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    /* 3열 고정 */
+    gap: 30px;
+    /* 카드 사이 간격 넓힘 */
+}
+
+/* 카드 스타일 */
+.store-card {
+    background-color: var(--card-bg-color);
+    border-radius: 16px;
+    /* 둥근 모서리 강조 */
+    padding: 24px;
+    display: flex;
+    /* 좌우 배치를 위한 flex */
+    justify-content: space-between;
+
+    box-shadow: 0 4px 12px var(--shadow, 0.05);
+    /* 부드러운 그림자 */
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    cursor: pointer;
+}
+
+.store-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px var(--shadow, 0.1);
+}
+
+/* --- 왼쪽: 텍스트 정보 영역 --- */
+.card-info-left {
+    flex: 1;
+    /* 남은 공간 모두 차지 */
+    margin-right: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-header {
+    display: flex;
+    align-items: baseline;
+    /* 텍스트 하단 기준 정렬 */
+    margin-bottom: 12px;
+}
+
+.card-header h3 {
+    font-size: 20px;
+    font-weight: 700;
+    margin-right: 8px;
+}
+
+.card-header .distance {
+    font-size: 14px;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+.card-info-left .address,
+.card-info-left .hours,
+.card-info-left .phone,
+.card-info-left .tags {
+    font-size: 15px;
+    color: var(--store_card);
+    line-height: 1.2;
+    margin-bottom: 6px;
+    word-break: keep-all;
+}
+
+.card-info-left .status-highlight {
+    font-weight: 500;
+}
+
+.tags {
+    margin: 12px 0;
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.tags span {
+    font-size: 12px;
+    background-color: var(--backgrond);
+    padding: 4px 8px;
+    border-radius: 4px;
+}
+
+.details-link {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--detailslink);
+    margin-top: auto;
+    /* 하단으로 밀어내기 */
+    display: inline-block;
+}
+
+.store-card:hover .details-link {
+    color: var(--main1);
+    /* 호버 시 링크 색상 변경 */
+    text-decoration: underline;
+}
+
+/* --- 오른쪽: 이미지 및 뱃지 영역 --- */
+.card-media-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    /* 오른쪽 정렬 */
+    flex-shrink: 0;
+    /* 크기 줄어들지 않음 */
+}
+
+.card-media-right img {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-bottom: 12px;
+    border: 1px solid var(--backgrond2);
+}
+
+.badge {
+    font-size: 12px;
+    color: var(--second_color);
+    display: flex;
+    align-items: center;
+}
+
+.badge-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    background-color: var(--text-secondary);
+    color: var(--caton);
+    border-radius: 50%;
+    font-size: 10px;
+    margin-right: 6px;
+    font-weight: 700;
+}
+
+/* --- 팝업 모달 스타일 --- */
+.modal-overlay {
+    display: none;
+    /* 기본적으로 숨김 */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--shadow, 0.5);
+    /* 배경 어둡게 */
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-overlay.active {
+    display: flex;
+    /* 활성화 시 보임 */
+}
+
+.modal-window {
+    background-color: var(--backgrond);
+    /* 전체 배경 회색 */
+    width: 90%;
+    max-width: 500px;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px var(--shadow, 0.2);
+    position: relative;
+    animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* 팝업 헤더 (붉은색) */
+.modal-top-header {
+    background-color: #b06d6d;
+    /* 이미지와 유사한 톤 */
+    color: var(--caton);
+    padding: 15px;
+    text-align: center;
+    font-weight: 700;
+    position: relative;
+}
+
+.close-btn {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: var(--caton);
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* 팝업 내용 영역 */
+.modal-body {
+    padding: 20px;
+}
+
+.modal-img-container img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 6px var(--shadow, 0.1);
+}
+
+#modalTitle {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: var(--three_color);
+}
+
+.modal-details {
+    text-align: left;
+}
+
+.modal-details .label {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--second_color);
+    margin-bottom: 5px;
+}
+
+.modal-details .detail-text {
+    font-size: 15px;
+    color: var(--three_color);
+    line-height: 1.5;
+    margin-bottom: 5px;
+}
+
+/* 하단 버튼 영역 */
+.modal-footer {
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    background-color: var(--backgrond);
+}
+
+.map-btn {
+    flex: 1;
+    background-color: var(--tabbutton);
+    color: var(--caton);
+    text-align: center;
+    padding: 12px 0;
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: 700;
+    transition: background-color 0.2s;
+}
+
+.map-btn:hover {
+    background-color: var(--caton_bg)
+}
+
+.burger-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 15%;
+}
+
+/* 각 레이어+텍스트 그룹 */
+.layer-group {
+    position: relative;
+    width: 350px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* 이미지 */
+.layer {
+    position: relative;
+    width: 100%;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s ease;
+}
+
+.layer.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 설명 텍스트 */
+.desc {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.7s ease;
+    font-size: 22px;
+    margin-top: 10px;
+}
+
+.desc.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* hover 시 재료 숨기기 */
+.burger-container:hover .layer,
+.burger-container:hover .desc {
+    opacity: 0 !important;
+}
+
+/* 완성 버거 이미지 */
+.burger-complete {
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1.05);
+    width: 380px;
+
+    opacity: 0;
+    transition: opacity 0.7s ease;
+    pointer-events: none;
+}
+
+.burger-container:hover {
+    transform: scale(1.5);
+}
+
+/* hover 시 완성 사진 등장 */
+.burger-container:hover .burger-complete {
+    opacity: 1;
+    transition: all 0.9s ease;
+}
+
+/* 탭 전체를 가운데 배치 */
+#tap {
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    text-align: center;
+    /* 이걸 넣으면 inline-block 요소가 중앙정렬됨 */
+}
+
+/* 탭 버튼 영역 */
+#tap .tab-button {
+    display: flex;
+    justify-content: center;
+    /* 버튼들 가로 가운데 정렬 */
+    gap: 20px;
+    /* 버튼 사이 간격 */
+    margin: 30px auto;
+}
+
+/* 버튼 디자인 (필요시) */
+#tap .tab-button button {
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    border: 3px dotted var(--border);
+}
+
+#tap .tab-button button:active {
+    background-color: var(--tabbutton);
+    /* 배경색을 검은색으로 */
+    color: var(--caton);
+    /* 글자색은 흰색으로 (검은색 배경에서 잘 보이도록) */
+}
+
+/* 모든 콘텐츠 숨기기 */
+#tap .tab-contents .content {
+    display: none;
+}
+
+#tap .tab-contents .content img {
+    /*이미지를 블록 요소로 변경 (필수) */
+    display: block;
+
+    /*좌우 마진을 자동으로 설정하여 중앙 정렬 */
+    margin: 0 auto;
+}
+
+.footer1 {
+    background-color: var(--text_color);
+}
+
+.footer1>div {
+    max-width: 1400px;
+    /* 화면 너비에 꽉 차도록 설정 */
+    width: 100%;
+    /* 좌우 패딩을 %로 지정하여 유동적으로 만듦 */
+    padding-left: 5%;
+    padding-right: 5%;
+    /* 가운데 정렬 */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.footer1>div>a>img {
+    max-width: 100%;
+    height: auto;
+    justify-content: center;
+}
+
+.sns {
+    display: flex;
+    width: auto;
+    padding: 10px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    flex-shrink: 0;
+    display: inline-block;
+}
+
+.sns1,
+.sns2,
+.sns3 {
+    align-items: center;
+    gap: 44px;
+    align-self: stretch;
+}
+
+.footer2 {
+    background-color: var(--main1);
+
+}
+
+.footer2>div {
+    max-width: 1400px;
+    /* 화면 너비에 꽉 차도록 설정 */
+    width: 100%;
+    /* 좌우 패딩을 %로 지정하여 유동적으로 만듦 */
+    padding-left: 5%;
+    padding-right: 5%;
+    /* 가운데 정렬 */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.copyright,
+.footer2>div>div {
+    color: var(--backgrond);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-self: stretch;
+}
+
+.footer2>div>div {
+    display: flex;
+    width: 30%;
+    padding: 10px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+/* 반응형 처리 */
+@media (max-width: 1024px) {
+    .store-grid {
+        grid-template-columns: repeat(2, 1fr);
+        /* 태블릿: 2열 */
+        gap: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .store-grid {
+        grid-template-columns: 1fr;
+        /* 모바일: 1열 */
+    }
+
+    .store-card {
+        padding: 20px;
+    }
+
+    /* 모바일에서 이미지 크기 조절 (선택사항) */
+    .card-media-right img {
+        width: 100px;
+        height: 100px;
+    }
+}
